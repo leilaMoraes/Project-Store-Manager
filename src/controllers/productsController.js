@@ -1,4 +1,4 @@
-const productsService = require('../services');
+const { productsService } = require('../services');
 
 const OK = 200;
 
