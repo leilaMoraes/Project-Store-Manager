@@ -15,4 +15,11 @@ const getProductById = async (id) => {
   return result;
 };
 
-module.exports = { getAllProducts, getProductById };
+const deleteProduct = async (id) => {
+  await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = ?',
+    [id],
+  );
+};
+
+module.exports = { getAllProducts, getProductById, deleteProduct };
