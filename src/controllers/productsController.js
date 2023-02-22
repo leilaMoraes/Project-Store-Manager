@@ -19,4 +19,11 @@ const getProduct = async (req, res) => {
   return res.status(OK).json(message);
 };
 
-module.exports = { getProducts, getProduct };
+const deleteProduct = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await productsService.deleteProduct(id);
+
+  return res.status(type).json({ message });
+};
+
+module.exports = { getProducts, getProduct, deleteProduct };
