@@ -3,6 +3,7 @@ const { productsModels } = require('../models');
 const NOT_FOUND = 404;
 const DELETED = 204;
 const OK = 200;
+const CREATED = 201;
 
 const getAllProducts = async () => {
   const allProducts = await productsModels.getAllProducts();
@@ -15,6 +16,11 @@ const getProductById = async (id) => {
   return { type: NOT_FOUND, message: 'Product not found' };
 };
 
+const insertProduct = async (name) => {
+  const newProduct = await productsModels.insertProduct(name);
+  return { type: CREATED, message: newProduct };
+};
+
 const deleteProduct = async (id) => {
   const product = await productsModels.getProductById(id);
 
@@ -24,4 +30,4 @@ const deleteProduct = async (id) => {
   return { type: DELETED, message: '' };
 };
 
-module.exports = { getAllProducts, getProductById, deleteProduct };
+module.exports = { getAllProducts, getProductById, deleteProduct, insertProduct };
