@@ -4,8 +4,8 @@ const sinon = require("sinon");
 const sinonChai = require("sinon-chai");
 const { productsService } = require("../../../src/services");
 const { productsController } = require("../../../src/controllers");
-const { allProductsService, productService, deleteService, notFound } = require("../services/mock");
-const { allProducts } = require("../models/mock");
+const { allProductsService, productService, deleteService, notFound, created } = require("../services/mock");
+const { allProducts, newProduct } = require("../models/mock");
 
 chai.use(sinonChai);
 
@@ -59,7 +59,22 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith({ message: "Product not found" });
   });
 
-  it('4) Deleta um produto pelo id (controller)', async function () {
+  it('4) Adiciona um novo produto (controller)', async function () {
+    const req = { body: { name: 'ProdutoX' } };
+    const res = {};
+
+    res.status = sinon.stub().returns(res);
+    res.json = sinon.stub().returns();
+
+    sinon.stub(productsService, 'insertProduct').resolves(created);
+
+    await productsController.insertProduct(req, res);
+
+    expect(res.status).to.have.been.calledWith(201);
+    expect(res.json).to.have.been.calledWith(newProduct);
+  });
+
+  it('5) Deleta um produto pelo id (controller)', async function () {
     const req = { params: { id: 1 } };
     const res = {};
 
@@ -74,7 +89,7 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith( { message: '' } );
   });
 
-  it('5) Não deleta um produto pelo id (controller)', async function () {
+  it('6) Não deleta um produto pelo id (controller)', async function () {
     const req = { params: { id: 0 } };
     const res = {};
 
