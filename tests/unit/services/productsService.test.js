@@ -22,8 +22,8 @@ describe('Testa a camada service para a rota /products', function () {
     expect(result).to.be.deep.equal(productService);
   });
 
-  it("Retorna id not found (service)", async function () {
-    sinon.stub(productsModels, 'getProductById').resolves(undefined);
+  it("Retorna id not found na função getProductById (service)", async function () {
+    sinon.stub(productsModels, "getProductById").resolves(undefined);
 
     const result = await productsService.getProductById(0);
     expect(result).to.be.deep.equal(notFound);
@@ -35,5 +35,12 @@ describe('Testa a camada service para a rota /products', function () {
 
     const result = await productsService.deleteProduct(1);
     expect(result).to.be.deep.equal(deleteService);
+  });
+
+  it("Retorna id not found na função deleteProducts (service)", async function () {
+    sinon.stub(productsModels, "getProductById").resolves(undefined);
+
+    const result = await productsService.deleteProduct(0);
+    expect(result).to.be.deep.equal(notFound);
   });
 });
