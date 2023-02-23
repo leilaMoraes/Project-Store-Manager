@@ -9,19 +9,19 @@ describe('Testa a camada model para a rota /products', function () {
     sinon.restore();
   });
 
-  it('Retorna todos os produtos cadastrados (model)', async function () {
+  it('1) Retorna todos os produtos cadastrados (model)', async function () {
     sinon.stub(connection, 'execute').resolves([allProducts]);
     const result = await productsModels.getAllProducts();
     expect(result).to.be.deep.equal(allProducts);
   });
 
-  it('Retorna um produto pelo id (model)', async function () {
+  it('2) Retorna um produto pelo id (model)', async function () {
     sinon.stub(connection, 'execute').resolves([[allProducts[0]]]);
     const result = await productsModels.getProductById(1);
     expect(result).to.be.deep.equal(allProducts[0]);
   });
 
-  it('Deleta um produto pelo id (model)', async function () {
+  it('3) Deleta um produto pelo id (model)', async function () {
     sinon.stub(connection, "execute").resolves(undefined);
     const result = await productsModels.deleteProduct(1);
     expect(result).to.be.deep.equal(undefined);

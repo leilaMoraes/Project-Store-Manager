@@ -14,7 +14,7 @@ describe('Testa a camada controller para a rota /products', function () {
     sinon.restore();
   });
 
-  it('Retorna todos os produtos cadastrados (controller)', async function () {
+  it('1) Retorna todos os produtos cadastrados (controller)', async function () {
     const req = {};
     const res = {};
 
@@ -29,7 +29,7 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith(allProducts);
   });
 
-  it('Retorna um produto pelo id (controller)', async function () {
+  it('2) Retorna um produto pelo id (controller)', async function () {
     const req = { params: { id: 1 } };
     const res = {};
 
@@ -44,7 +44,7 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith(allProducts[0]);
   });
 
-  it('Retorna product not found (controller)', async function () {
+  it('3) Retorna product not found (controller)', async function () {
     const req = { params: { id: 0 } };
     const res = {};
 
@@ -59,7 +59,7 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith({ message: "Product not found" });
   });
 
-  it('Deleta um produto pelo id (controller)', async function () {
+  it('4) Deleta um produto pelo id (controller)', async function () {
     const req = { params: { id: 1 } };
     const res = {};
 
@@ -74,7 +74,7 @@ describe('Testa a camada controller para a rota /products', function () {
     expect(res.json).to.have.been.calledWith( { message: '' } );
   });
 
-  it('Não deleta um produto pelo id (controller)', async function () {
+  it('5) Não deleta um produto pelo id (controller)', async function () {
     const req = { params: { id: 0 } };
     const res = {};
 

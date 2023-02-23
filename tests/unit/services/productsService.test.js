@@ -10,26 +10,26 @@ describe('Testa a camada service para a rota /products', function () {
     sinon.restore();
   });
   
-  it('Retorna todos os produtos cadastrados (service)', async function () {
+  it('1) Retorna todos os produtos cadastrados (service)', async function () {
     sinon.stub(productsModels, 'getAllProducts').resolves(allProducts);
     const result = await productsService.getAllProducts();
     expect(result).to.be.deep.equal(allProductsService);
   });
 
-  it('Retorna um produto pelo id (service)', async function () {
+  it('2) Retorna um produto pelo id (service)', async function () {
     sinon.stub(productsModels, "getProductById").resolves(allProducts[0]);
     const result = await productsService.getProductById(1);
     expect(result).to.be.deep.equal(productService);
   });
 
-  it("Retorna id not found na função getProductById (service)", async function () {
-    sinon.stub(productsModels, "getProductById").resolves(undefined);
+  it('3) Retorna id not found na função getProductById (service)', async function () {
+    sinon.stub(productsModels, 'getProductById').resolves(undefined);
 
     const result = await productsService.getProductById(0);
     expect(result).to.be.deep.equal(notFound);
   });
 
-  it('Deleta um produto pelo id (service)', async function () {
+  it('4) Deleta um produto pelo id (service)', async function () {
     sinon.stub(productsModels, 'getProductById').resolves(allProducts[0]);
     sinon.stub(productsModels, 'deleteProduct').resolves(undefined);
 
@@ -37,8 +37,8 @@ describe('Testa a camada service para a rota /products', function () {
     expect(result).to.be.deep.equal(deleteService);
   });
 
-  it("Retorna id not found na função deleteProducts (service)", async function () {
-    sinon.stub(productsModels, "getProductById").resolves(undefined);
+  it('5) Retorna id not found na função deleteProducts (service)', async function () {
+    sinon.stub(productsModels, 'getProductById').resolves(undefined);
 
     const result = await productsService.deleteProduct(0);
     expect(result).to.be.deep.equal(notFound);
