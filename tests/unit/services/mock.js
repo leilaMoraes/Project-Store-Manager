@@ -4,4 +4,6 @@ const allProductsService = { type: null, message: allProducts };
 
 const productService = { type: null, message: allProducts[0] };
 
-module.exports = { allProductsService, productService }
+const deleteService = { type: 204, message: '' };
+
+module.exports = { allProductsService, productService, deleteService }

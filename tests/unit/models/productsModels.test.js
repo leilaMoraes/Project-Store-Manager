@@ -21,7 +21,7 @@ describe('Testa a camada model para a rota /products', function () {
     expect(result).to.be.deep.equal(allProducts[0]);
   });
 
-  it('Deleta um produto pelo id', async function () {
+  it('Deleta um produto pelo id (model)', async function () {
     sinon.stub(connection, "execute").resolves(undefined);
     const result = await productsModels.deleteProduct(1);
     expect(result).to.be.deep.equal(undefined);
