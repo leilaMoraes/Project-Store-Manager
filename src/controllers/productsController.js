@@ -20,7 +20,7 @@ const getProduct = async (req, res) => {
 const insertProduct = async (req, res) => {
   const { name } = req.body;
   const { type, message } = await productsService.insertProduct(name);
-  return res.status(type).json({ message });
+  return res.status(type).json(message);
 };
 
 const deleteProduct = async (req, res) => {

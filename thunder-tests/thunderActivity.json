@@ -19,10 +19,10 @@
     "containerId": "",
     "name": "https://localhost/3000",
     "url": "http://localhost:3000/products",
-    "method": "GET",
+    "method": "POST",
     "sortNum": 0,
     "created": "2023-02-16T22:48:10.758Z",
-    "modified": "2023-02-22T22:19:33.526Z",
+    "modified": "2023-02-23T17:27:58.039Z",
     "headers": [],
     "params": [],
     "tests": []
