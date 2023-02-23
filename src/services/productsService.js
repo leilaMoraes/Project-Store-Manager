@@ -2,10 +2,11 @@ const { productsModels } = require('../models');
 
 const NOT_FOUND = 404;
 const DELETED = 204;
+const OK = 200;
 
 const getAllProducts = async () => {
   const allProducts = await productsModels.getAllProducts();
-  return { type: null, message: allProducts };
+  return { type: OK, message: allProducts };
 };
 
 const getProductById = async (id) => {

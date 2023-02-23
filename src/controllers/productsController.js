@@ -5,9 +5,7 @@ const OK = 200;
 const getProducts = async (_req, res) => {
   const { type, message } = await productsService.getAllProducts();
 
-  if (type) return res.status(type).json(message);
-
-  return res.status(OK).json(message);
+  return res.status(type).json(message);
 };
 
 const getProduct = async (req, res) => {
