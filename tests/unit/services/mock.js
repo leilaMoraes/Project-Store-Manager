@@ -2,4 +2,6 @@ const { allProducts } = require("../models/mock");
 
 const allProductsService = { type: null, message: allProducts };
 
-module.exports = { allProductsService }
+const productService = { type: null, message: allProducts[0] };
+
+module.exports = { allProductsService, productService }
