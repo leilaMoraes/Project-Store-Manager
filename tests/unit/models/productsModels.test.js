@@ -5,6 +5,10 @@ const { productsModels } = require("../../../src/models");
 const { allProducts } = require("./mock");
 
 describe('Testa a camada model para a rota /products', function () {
+  afterEach(function () {
+    sinon.restore();
+  });
+
   it('Retorna todos os produtos cadastrados (model)', async function () {
     sinon.stub(connection, 'execute').resolves([allProducts]);
     const result = await productsModels.getAllProducts();
@@ -17,7 +21,9 @@ describe('Testa a camada model para a rota /products', function () {
     expect(result).to.be.deep.equal(allProducts[0]);
   });
 
-  afterEach(function () {
-    sinon.restore();
-  });
+  it('Deleta um produto pelo id', async function () {
+    sinon.stub(connection, "execute").resolves(undefined);
+    const result = await productsModels.deleteProduct(1);
+    expect(result).to.be.deep.equal(undefined);
+  })
 });
