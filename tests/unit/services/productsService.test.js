@@ -2,8 +2,8 @@ const { expect } = require("chai");
 const sinon = require("sinon");
 const { productsModels } = require("../../../src/models");
 const { productsService } = require("../../../src/services");
-const { allProducts } = require("../models/mock");
-const { allProductsService, productService, deleteService, notFound } = require("./mock");
+const { allProducts, newProduct } = require("../models/mock");
+const { allProductsService, productService, deleteService, notFound, created } = require("./mock");
 
 describe('Testa a camada service para a rota /products', function () {
   afterEach(function () {
@@ -29,7 +29,14 @@ describe('Testa a camada service para a rota /products', function () {
     expect(result).to.be.deep.equal(notFound);
   });
 
-  it('4) Deleta um produto pelo id (service)', async function () {
+  it('4) Adiciona um novo produto (service)', async function () {
+    sinon.stub(productsModels, 'insertProduct').resolves(newProduct);
+
+    const result = await productsService.insertProduct('ProdutoX');
+    expect(result).to.be.deep.equal(created);
+  });
+
+  it('5) Deleta um produto pelo id (service)', async function () {
     sinon.stub(productsModels, 'getProductById').resolves(allProducts[0]);
     sinon.stub(productsModels, 'deleteProduct').resolves(undefined);
 
@@ -37,7 +44,7 @@ describe('Testa a camada service para a rota /products', function () {
     expect(result).to.be.deep.equal(deleteService);
   });
 
-  it('5) Retorna id not found na função deleteProducts (service)', async function () {
+  it('6) Retorna id not found na função deleteProducts (service)', async function () {
     sinon.stub(productsModels, 'getProductById').resolves(undefined);
 
     const result = await productsService.deleteProduct(0);
