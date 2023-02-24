@@ -21,6 +21,11 @@ const insertProduct = async (name) => {
   return { type: CREATED, message: newProduct };
 };
 
+const updateProduct = async (name, id) => {
+  const updated = await productsModels.updateProduct(name, id);
+  return { type: OK, message: updated };
+};
+
 const deleteProduct = async (id) => {
   const product = await productsModels.getProductById(id);
 
@@ -30,4 +35,4 @@ const deleteProduct = async (id) => {
   return { type: DELETED, message: '' };
 };
 
-module.exports = { getAllProducts, getProductById, deleteProduct, insertProduct };
+module.exports = { getAllProducts, getProductById, deleteProduct, insertProduct, updateProduct };

@@ -18,13 +18,18 @@
     "colId": "history",
     "containerId": "",
     "name": "https://localhost/3000",
-    "url": "http://localhost:3000/products",
-    "method": "POST",
+    "url": "http://localhost:3000/products/2",
+    "method": "PUT",
     "sortNum": 0,
     "created": "2023-02-16T22:48:10.758Z",
-    "modified": "2023-02-23T17:27:58.039Z",
+    "modified": "2023-02-24T17:59:55.622Z",
     "headers": [],
     "params": [],
+    "body": {
+      "type": "json",
+      "raw": "aliança",
+      "form": []
+    },
     "tests": []
   }
 ]
