@@ -14,4 +14,10 @@ describe('Testa a camada model para a rota /sales', function () {
     const result = await salesModel.getAllSales();
     expect(result).to.be.deep.equal(allSales);
   });
+
+  it('2) Retorna vendas com mesmo id (model)', async function () {
+    sinon.stub(connection, 'execute').resolves([allSales[2]]);
+    const result = await salesModel.getSaleById(2);
+    expect(result).to.be.deep.equal(allSales[2]);
+  });
 });
