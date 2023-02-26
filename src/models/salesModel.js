@@ -12,7 +12,7 @@ const getAllSales = async () => {
 };
 
 const getSaleById = async (id) => {
-  const [[result]] = await connection.execute(
+  const [result] = await connection.execute(
     `SELECT s.date, sp.product_id AS productId, sp.quantity
     FROM StoreManager.sales s
     JOIN StoreManager.sales_products sp

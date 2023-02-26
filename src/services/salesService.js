@@ -2,6 +2,7 @@ const { salesModel } = require('../models');
 
 const OK = 200;
 const NOT_FOUND = 404;
+const MESSAGE = { message: 'Sale not found' };
 
 const getAllSales = async () => {
   const allSales = await salesModel.getAllSales();
@@ -10,8 +11,8 @@ const getAllSales = async () => {
 
 const getSaleById = async (id) => {
   const sale = await salesModel.getSaleById(id);
-  if (sale) return { type: OK, message: sale };
-  return { type: NOT_FOUND, message: 'Sale not found' };
+  if (sale.length) return { type: OK, message: sale };
+  return { type: NOT_FOUND, message: MESSAGE };
 };
 
 module.exports = { getAllSales, getSaleById };
