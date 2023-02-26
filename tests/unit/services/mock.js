@@ -1,4 +1,4 @@
-const { allProducts, newProduct } = require("../models/mock");
+const { allProducts, newProduct, allSales } = require("../models/mock");
 
 const allProductsService = { type: 200, message: allProducts };
 
@@ -10,4 +10,6 @@ const deleteService = { type: 204, message: '' };
 
 const created = { type: 201, message: newProduct }
 
-module.exports = { allProductsService, productService, deleteService, notFound, created }
+const allSalesService = { type: 200, message: allSales }
+
+module.exports = { allProductsService, productService, deleteService, notFound, created, allSalesService }
