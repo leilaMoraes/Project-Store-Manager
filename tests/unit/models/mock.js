@@ -41,4 +41,18 @@ const allSales =
   }
 ]
 
-module.exports = { allProducts, newProduct, allSales }
+const saleById =
+[
+  {
+    date: "2023-02-26T14:11:07.000Z",
+    productId: 1,
+    quantity: 5,
+  },
+  {
+    date: "2023-02-26T14:11:07.000Z",
+    productId: 2,
+    quantity: 10,
+  },
+]
+
+module.exports = { allProducts, newProduct, allSales, saleById }
