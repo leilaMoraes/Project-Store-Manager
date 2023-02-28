@@ -12,4 +12,10 @@ const getSale = async (req, res) => {
   return res.status(type).json(message);
 };
 
-module.exports = { getSales, getSale };
+const deleteSale = async (req, res) => {
+  const { id } = req.params;
+  const { type, message } = await salesService.deleteSale(id);
+  return res.status(type).json(message);
+};
+
+module.exports = { getSales, getSale, deleteSale };
