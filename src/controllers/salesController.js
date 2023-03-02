@@ -12,10 +12,15 @@ const getSale = async (req, res) => {
   return res.status(type).json(message);
 };
 
+const insertSale = async (req, res) => {
+  const { type, message } = await salesService.insertSale(req.body);
+  res.status(type).json(message);
+};
+
 const deleteSale = async (req, res) => {
   const { id } = req.params;
   const { type, message } = await salesService.deleteSale(id);
   return res.status(type).json(message);
 };
 
-module.exports = { getSales, getSale, deleteSale };
+module.exports = { getSales, getSale, deleteSale, insertSale };

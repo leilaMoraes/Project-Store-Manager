@@ -24,10 +24,10 @@ const getSaleById = async (id) => {
 };
 
 const insertSales = async (date) => {
-  const [{ saleId }] = await connection.execute(
+  const [{ insertId }] = await connection.execute(
     'INSERT INTO StoreManager.sales (date) VALUES (?)', [date],
   );
-  return saleId;
+  return insertId;
 };
 
 const insertSalesProducts = async (saleId, product) => {
